@@ -9,10 +9,34 @@
     "pages/chooseLib/chooseLib"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#eb6c6a",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
-  }
+    "navigationBarBackgroundColor": "#eb6c6a",
+    "navigationBarTitleText": "枫糖",
+    "navigationBarTextStyle": "white"
+  },
+    "tabBar": {
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "枫糖服务",
+          "iconPath": "../miniprogram/images/create-collection.png",
+          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+        },
+        {
+          "pagePath": "pages/deployFunctions/deployFunctions",
+          "text": "店铺诊断",
+          "iconPath": "../miniprogram/images/create-collection.png",
+          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+        },
+        {
+          "pagePath": "pages/deployFunctions/deployFunctions",
+          "text": "我的店铺",
+          "iconPath": "../miniprogram/images/create-collection.png",
+          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+        }
+      ]
+    },
+  "sitemapLocation": "sitemap.json"
+
 }

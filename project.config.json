@@ -10,8 +10,11 @@
 	},
 	"appid": "wxdb78a2cbf5ace274",
 	"projectname": "testapp",
-	"libVersion": "2.2.5",
+	"libVersion": "2.9.4",
 	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

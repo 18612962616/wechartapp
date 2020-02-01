@@ -55,7 +55,7 @@ page {
 
 .uploader-text, .tunnel-text {
   width: 100%;
-  line-height: 52px;
+  line-height: 32px;
   font-size: 34rpx;
   color: #007aff;
 }
@@ -134,4 +134,18 @@ page {
   font-size: 24rpx;
   line-height: 36rpx;
   word-break: break-all;
+}
+.footer{
+
+  margin-top: 40rpx;
+  height: 140rpx;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+  float:left;
 }
