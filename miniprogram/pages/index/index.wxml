@@ -4,38 +4,38 @@
   <view class="uploader" style="display: flex;flex-direction: row;align-items: center;">
     <view >
       <view>
-        <text style="color:black;font-size:24px;">32 款推广方式</text>
+        <text style="color:black;font-size:44rpx;">32 款推广方式</text>
       </view>
       <view>
-        <text style="color:#dcdcdc;font-size:18px;margin-top:-110px;">已推广<text style="color:red;">1298</text>家店铺，本月新增<text style="color:red;">12家</text></text>
+        <text style="color:#dcdcdc;font-size:33rpx;margin-top:-200rpx;">已推广<text style="color:red;">1298</text>家店铺，本月新增<text style="color:red;">12家</text></text>
       </view>
     </view>
     <view>
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}});">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url(../../images/index-tu-1.png);">
     </button>
     </view>
   </view>
   <!-- 抖音推广 -->
-  <view class="uploader" style="padding-top:20px;font-size:24px;">
+  <view class="uploader" style="padding-top:36rpx;font-size:44rpx;">
     <view style="">
       <text>推广方式选择</text>
     </view>
-    <view style="margin-top:20px;width:100%">
-      <image src="../../images/douyin.jpg" style="width:95%;height:100px;"></image>
+    <view style="margin-top:36rpx;width:100%">
+      <image src="../../images/index-tu-2.png" style="width:95%;height:181rpx;"></image>
     </view>
-    <view style="margin-top:20px;width:100%">
-      <image src="../../images/douyin.jpg" style="width:95%;height:100px;"></image>
+    <view style="margin-top:36rpx;width:100%">
+      <image src="../../images/index-tu-3.png" style="width:95%;height:181rpx;"></image>
     </view>
-    <view style="margin-top:20px;width:100%">
-      <image src="../../images/douyin.jpg" style="width:95%;height:100px;"></image>
+    <view style="margin-top:36rpx;width:100%">
+      <image src="../../images/index-tu-4.png" style="width:95%;height:181rpx;"></image>
     </view>
-    <view style="margin-top:20px;width:100%">
-      <image src="../../images/douyin.jpg" style="width:45%;height:100px;"></image>
-      <image src="../../images/douyin.jpg" style="width:45%;height:100px;margin-left:5%"></image>
+    <view style="margin-top:36rpx;width:100%">
+      <image src="../../images/index-tu-5.png" style="width:45%;height:181rpx;"></image>
+      <image src="../../images/index-tu-5.png" style="width:45%;height:181rpx;margin-left:5%"></image>
     </view>
-    <view style="margin-top:20px;width:100%">
-      <image src="../../images/douyin.jpg" style="width:45%;height:100px;"></image>
-      <image src="../../images/douyin.jpg" style="width:45%;height:100px;margin-left:5%"></image>
+    <view style="margin-top:36rpx;width:100%">
+      <image src="../../images/index-tu-5.png" style="width:45%;height:181rpx;"></image>
+      <image src="../../images/index-tu-5.png" style="width:45%;height:181rpx;margin-left:5%"></image>
     </view>
   </view>
 
@@ -45,38 +45,38 @@
 
 
   <!-- 用户 openid -->
-  <view class="userinfo">
+  <!-- <view class="userinfo">
     <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     <view>
       <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
     </view>
-  </view>
+  </view> -->
 
 
   <!-- 上传图片 -->
-  <view class="uploader">
+  <!-- <view class="uploader">
     <view class="uploader-text" bindtap="doUpload">
       <text>上传图片</text>
     </view>
     <view class="uploader-container" wx:if="{{imgUrl}}">
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
-  </view>
+  </view> -->
 
 
   <!-- 操作数据库 -->
-  <view class="uploader">
+  <!-- <view class="uploader">
     <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
       <text>前端操作数据库</text>
     </navigator>
-  </view>
+  </view> -->
 
   <!-- 新建云函数 -->
-  <view class="uploader">
+  <!-- <view class="uploader">
     <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
       <text>快速新建云函数</text>
     </navigator>
-  </view>
+  </view> -->
 
 
 </view>

@@ -1,0 +1,72 @@
+/**index.wxss**/
+
+page {
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color:rgb(128,128,128);
+  
+}
+.container{
+  background-color:#fd6267;
+}
+.form{
+  margin-top:100rpx;
+  border: 20rpx solid #fececd;
+  border-radius:10rpx;
+  width:600rpx;
+  padding-left:30rpx;
+  padding-right: 30rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 50rpx;
+  background-color: white;
+}
+.form_element {
+margin-top:40rpx;
+}
+.form_title {
+  font-weight: bold;
+  color: black
+}
+.form_element_space{
+margin-top:20rpx;
+}
+.form input {
+  
+  border:1rpx solid #e6e5e5;
+  border-radius:10rpx;
+  height: 76rpx;
+  padding-left:20rpx;
+  padding-right:20rpx;
+}
+.picker{
+
+    background-color: #FFFFFF;
+}
+.radio{
+  width:500rpx;
+  margin-top:20rpx;
+}
+.radio_text{
+  margin-left:15rpx;
+}
+.checkbox{
+  display: block;
+  margin-top:20rpx;
+}
+/**控制隐藏显示用样式**/
+.header_view_hide{
+  display: none;
+}
+
+.header_view_show{
+  display: block;
+}
+/* 表单提交按钮样式 */
+.submit-button{
+  margin-top: 20rpx;
+ margin-bottom:20rpx;
+ background-color: rgb(235,108,106)
+ 
+}

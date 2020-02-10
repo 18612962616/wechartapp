@@ -6,34 +6,35 @@
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/chooseLib/chooseLib",
+    "pages/shopDiagnosis/shopDiagnosis"
   ],
   "window": {
-    "backgroundColor": "#eb6c6a",
+    "backgroundColor": "#fd6267",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#eb6c6a",
-    "navigationBarTitleText": "枫糖",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#fd6267",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "枫糖"
   },
     "tabBar": {
       "list": [
         {
           "pagePath": "pages/index/index",
           "text": "枫糖服务",
-          "iconPath": "../miniprogram/images/create-collection.png",
-          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+          "iconPath": "../miniprogram/images/index-01.png",
+          "selectedIconPath": "../miniprogram/images/index-01-h.png"
         },
         {
-          "pagePath": "pages/deployFunctions/deployFunctions",
+          "pagePath": "pages/shopDiagnosis/shopDiagnosis",
           "text": "店铺诊断",
-          "iconPath": "../miniprogram/images/create-collection.png",
-          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+          "iconPath": "../miniprogram/images/index-02.png",
+          "selectedIconPath": "../miniprogram/images/index-02-h.png"
         },
         {
           "pagePath": "pages/deployFunctions/deployFunctions",
           "text": "我的店铺",
-          "iconPath": "../miniprogram/images/create-collection.png",
-          "selectedIconPath": "../miniprogram/images/console-entrance.png"
+          "iconPath": "../miniprogram/images/index-03.png",
+          "selectedIconPath": "../miniprogram/images/index-03-h.png"
         }
       ]
     },
