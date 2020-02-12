@@ -1,0 +1,203 @@
+    
+
+    <text style="margin-left:20rpx;font-size:27rpx;">诊断出<text style="color:red">25</text>项,详情建议如下></text>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-1.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">五连图：<text class="result_element_space">{{diagnoseMerchantpass1}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-2.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">商家相册：<text class="result_element_space" >{{diagnoseMerchantpass2}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-3.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">主图视频：<text class="result_element_space" >{{diagnoseMerchantpass3}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-4.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">二楼视频：<text class="result_element_space" >{{diagnoseMerchantpass4}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-5.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">商家招牌菜：<text class="result_element_space" >{{diagnoseMerchantpass5}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-6.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">商家新鲜事：<text class="result_element_space" >{{diagnoseMerchantpass6}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-7.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">品牌故事：<text class="result_element_space" >{{diagnoseMerchantpass7}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-8.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">预定：<text class="result_element_space" >{{diagnoseMerchantpass8}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-9.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">排队：<text class="result_element_space" >{{diagnoseMerchantpass9}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-10.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">达人探店：<text class="result_element_space" >{{diagnoseMerchantpass10}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-11.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">消费者评论维护：<text class="result_element_space" >{{diagnoseMerchantpass11}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-12.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">优惠促销：<text class="result_element_space" >{{promotion1}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-13.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">优惠买单：<text class="result_element_space" >{{promotion2}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-14.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">代金券：<text class="result_element_space" >{{promotion3}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-15.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">单人餐：<text class="result_element_space" >{{promotion4}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-16.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">双人餐：<text class="result_element_space" >{{promotion5}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-17.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">四人餐：<text class="result_element_space" >{{promotion6}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-18.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">多人餐：<text class="result_element_space" >{{promotion7}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-19.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">拼团：<text class="result_element_space" >{{promotion8}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-20.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">秒杀：<text class="result_element_space" >{{promotion9}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-21.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">新客立减：<text class="result_element_space" >{{promotion10}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-22.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">橙V专享：<text class="result_element_space" >{{promotion11}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-23.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">全渠道会员：<text class="result_element_space" >{{promotion12}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-24.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">点评霸王餐：<text class="result_element_space" >{{promotion13}}</text></text>
+      </view>
+    </view>
+    <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-25.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">点评VIP特权：<text class="result_element_space" >{{promotion14}}</text></text>
+      </view>
+    </view>

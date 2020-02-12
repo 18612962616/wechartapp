@@ -1,0 +1,9 @@
+   <text style="margin-left:20rpx;font-size:27rpx;">未具备足够诊断指标，详情建议如下></text>
+       <view class="result_element">
+      <view>
+        <image class="result_element_images" src="../../images/nu-1.png"></image>
+      </view>
+      <view>
+        <text class="result_element_title">建议开通商户通和旺铺宝产品提升店铺收益</text>
+      </view>
+    </view>

@@ -1,493 +1,503 @@
-
 <!-- 表单填写页面 -->
-<view hidden="ifform">
-<image style="width:750rpx" src="../../images/background1.jpg"></image>
-<!-- 已填写过表单显示的诊断结果页面 -->
-<view class="container">
-<!-- 诊断结果 -->
-</view>
-</view>
-<view hidden="!ifform">
-<image style="width:750rpx" src="../../images/background1.jpg"></image>
-<view class="container" >
-  <!-- 基础信息表单 -->
-  <form id="baseForm" class="form" bindsubmit="baseFormSubmit" bindreset="baseFormReset" >
-  <input  hidden="true" name="id" ></input>
-<input value='{{openid}}' hidden="true" name="openid" ></input>
-  <view hidden="{{!ifbaseForm}}">
-    <view class="form_element">
-      <view class="form_title">1. 店名</view>
-      <view class="form_element_space"></view>
-      <input name="shopname" placeholder="(大众点评商铺名称-分点名)" />
+
+
+<view hidden="{{!ifresult}}">
+  <image style="width:750rpx;height:380rpx" src="../../images/background2.png"></image>
+  <!-- 已填写过表单显示的诊断结果页面 -->
+  <view class="container" style="margin-bottom:50rpx;">
+    <!-- 诊断结果 -->
+    <view hidden="{{!ifresult1}}">
+      <include src="result1.wxml" />
     </view>
-    <view class="form_element">
-      <view class="form_title">2. 商圈</view>
-      <view class="form_element_space"></view>
-      <picker mode="region" bindchange="bindShopRegionChange" value="{{region}}" custom-item="{{customItem}}">
-        <view class="picker" style="display: flex;">
-          <input style="width:140rpx;" name="shopregion1" value="{{region[0]}}" disabled="true" />
-          <input style="width:140rpx;margin-left:17rpx;" name="shopregion2" value="{{region[1]}}" disabled="true" />
-          <input style="width:165rpx;margin-left:17rpx;" name="shopregion3" value="{{region[2]}}" disabled="true" />
-          <input value='{{region}}' hidden="true" name="shopregion" ></input>
-        </view>
-      </picker>
+    <view hidden="{{!ifresult2}}">
+      <include src="result2.wxml" />
     </view>
-    <view class="form_element">
-      <view class="form_title">3. 店铺开业时间</view>
-      <view class="form_element_space"></view>
-      <picker mode="date" value="{{date}}" start="1990-09-01" end="2030-09-01" bindchange="bindOpenDateChange">
-        <view class="picker">
-          <input style="width:560rpx;" name="opendate" value="{{date}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">4. 店铺平米数</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindScaleChange" value="{{index1}}" range="{{scale}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="scale" value="{{scale[index1]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">5. 店内线下实际人均</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPerCapitaChange" value="{{index2}}" range="{{perCapita}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="percapita" value="{{perCapita[index2]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">6. 店铺菜系</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindStyleChange" value="{{index3}}" range="{{style}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="style" value="{{style[index3]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">7. 大众点评店铺星级</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindStarChange" value="{{index4}}" range="{{star}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="star" value="{{star[index4]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">8. 店铺总评论数</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindCommentChange" value="{{index5}}" range="{{comment}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="comment" value="{{comment[index5]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">9. 店铺类型</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindTypeChange" value="{{index6}}" range="{{type}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="type" value="{{type[index6]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">10. 店铺主要消费群体</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindConsumerChange" value="{{index7}}" range="{{consumer}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="consumer" value="{{consumer[index7]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">11. 门店经营情况</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindManageChange" value="{{index8}}" range="{{manage}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="manage" value="{{manage[index8]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">12. 开门费/天(除转让、装修)</view>
-      <view class="form_element_space"></view>
-      <input name="keymoney" placeholder="请填写开门费" />
-    </view>
-    <view class="form_element">
-      <view class="form_title">13. 关注的周边竞对商户名称</view>
-      <view class="form_element_space"></view>
-      <input name="contendshop" placeholder="请填写关注的周边竞对商户名称" />
-    </view>
-    <view class="form_element">
-      <view class="form_title">14. 目前店内月流水(不包含储值金额)</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindAccountChange" value="{{index9}}" range="{{account}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="account" value="{{account[index9]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">15. 店内会员规则</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindRuleChange" value="{{index10}}" range="{{rule}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="rule" value="{{rule[index10]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element" wx:if="{{ifpreferential}}">
-      <view class="form_title">15-1. 会员优惠体系</view>
-      <view class="form_element_space"></view>
-      <checkbox-group bindchange="checkboxPreferentialChange">
-        <label class="checkbox" wx:for="{{preferential}}">
-          <checkbox value="{{item.name}}"  />{{item.value}}
-        </label>
-      </checkbox-group>
-      <input hidden="true" name="preferential" value='{{preferentialSelect}}'/>
-    </view>
-    <view class="form_element">
-      <view class="form_title">16. 店铺线上推广有无预算</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindSpreadChange" value="{{index11}}" range="{{spread}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="spread" value="{{spread[index11]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element" wx:if="{{ifpromotionMoney}}">
-      <view class="form_title">16-1. 目前每月花费在线上推广费用</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotionMoneyChange" value="{{index12}}" range="{{promotionMoney}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotionmoney" value="{{promotionMoney[index12]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">17. 店铺是否开通商户通</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPassChange" value="{{index13}}" range="{{merchantPass}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass" value="{{merchantPass[index13]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">18. 是否购买过大众点评产品(可多选)</view>
-      <view class="form_element_space"></view>
-      <checkbox-group bindchange="checkboxCommentProductChange">
-        <label class="checkbox" wx:for="{{commentProduct}}">
-          <checkbox value="{{item.name}}"  />{{item.value}}
-        </label>
-      </checkbox-group>
-      <input hidden="true" name="commentproduct" value='{{commentProductSelect}}'/>
-      
-    </view>
-    <view class="form_element">
-      <view class="form_title">19. 店铺是否开通推广通</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindCommunicationChange" value="{{index14}}" range="{{communication}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="communication" value="{{communication[index14]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element" wx:if="{{ifcommunicationBudget}}">
-      <view class="form_title">19-1. 推广通预算</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindCommunicationBudgetChange" value="{{index15}}" range="{{communicationBudget}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="communicationbudget" value="{{communicationBudget[index15]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">20. 是否采买过除大众点评其他站外流量产品(可多选)</view>
-      <view class="form_element_space"></view>
-      <checkbox-group bindchange="checkboxOtherProductChange">
-        <label class="checkbox" wx:for="{{otherProduct}}">
-          <checkbox   value="{{item.name}}"  />{{item.value}}
-        </label>
-      </checkbox-group>
-      <input hidden="true" name="otherproduct" value='{{otherProductSelect}}'/>
-    </view>
-    <view class="form_element">
-      <view class="form_title">21. 可以接受店内活动的最大优惠</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindDiscountChange" value="{{index16}}" range="{{discount}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="discountchange" value="{{discount[index16]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">22. 店内最近一次的活动内容是(活动内容、时效、活动效果)</view>
-      <view class="form_element_space"></view>
-      <input name="activity" placeholder="请输入最近一次活动内容" />
-    </view>
-    <view class="form_element">
-      <view class="form_title">23. 当前急需解决问题</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindProblemChange" value="{{index17}}" range="{{problem}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="problem" value="{{problem[index17]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">24. 如合作线上运营团队，初期运营目标是</view>
-      <view class="form_element_space"></view>
-      <input name="objective" placeholder="请输入运营目标" />
-    </view>
-    <view>
-      <button formType="submit"   class="submit-button"  data-index="1" > 下一步 </button>
+    <view hidden="{{!ifresult3}}">
+      <include src="result3.wxml" />
     </view>
   </view>
-  <!--商户通子表单-->
-  <!-- <form id="merchantPassForm" class="form" bindsubmit="merchantPassFormSubmit" bindreset="merchantPassFormReset" wx:if="{{ifmerchantPassForm}}"> -->
-  <view hidden="{{!ifmerchantPassForm}}">
-    <view class="form_element">
-      <view class="form_title">1. 五连图(更换周期)</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass1Change" value="{{index21}}" range="{{merchantPass1}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass1" value="{{merchantPass1[index21]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">2. 商家相册(环境、菜品)</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass2Change" value="{{index22}}" range="{{merchantPass2}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass2" value="{{merchantPass2[index22]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">3. 主图视频</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass3Change" value="{{index23}}" range="{{merchantPass3}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass3" value="{{merchantPass3[index23]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">4. 二楼视频</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass4Change" value="{{index24}}" range="{{merchantPass4}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass4" value="{{merchantPass4[index24]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">5. 商家招牌菜</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass5Change" value="{{index25}}" range="{{merchantPass5}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass5" value="{{merchantPass5[index25]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">6. 商家新鲜事</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass6Change" value="{{index26}}" range="{{merchantPass6}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass6" value="{{merchantPass6[index26]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">7. 品牌故事</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass7Change" value="{{index27}}" range="{{merchantPass7}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass7" value="{{merchantPass7[index27]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">8. 预定</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass8Change" value="{{index28}}" range="{{merchantPass8}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass8" value="{{merchantPass8[index28]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">9. 排队</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass9Change" value="{{index29}}" range="{{merchantPass9}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass9" value="{{merchantPass9[index29]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">10. 达人探店</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass10Change" value="{{index30}}" range="{{merchantPass10}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass10" value="{{merchantPass10[index30]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">11. 消费者评论维护</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindMerchantPass11Change" value="{{index31}}" range="{{merchantPass11}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="merchantpass11" value="{{merchantPass11[index31]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view>
-      <button formType="submit"  class="submit-button"  data-index="2" > 下一步 </button>
-    </view>
-  </view>
-  <!--优惠促销子表单-->
-  <!-- <form id="promotionForm" class="form" bindsubmit="promotionFormSubmit" bindreset="promotionFormReset" wx:if="{{ifpromotionForm}}"> -->
-  <view hidden="{{!ifpromotionForm}}">
-    <view class="form_element">
-      <view class="form_title">1. 优惠促销</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion1Change" value="{{index41}}" range="{{promotion1}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion1" value="{{promotion1[index41]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">2. 优惠买单</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion2Change" value="{{index42}}" range="{{promotion2}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion2" value="{{promotion2[index42]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">3. 代金券</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion3Change" value="{{index43}}" range="{{promotion3}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion3" value="{{promotion3[index43]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">4. 单人餐</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion4Change" value="{{index44}}" range="{{promotion4}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion4" value="{{promotion4[index44]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">5. 双人餐</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion5Change" value="{{index45}}" range="{{promotion5}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion5" value="{{promotion5[index45]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">6. 四人餐</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion6Change" value="{{index46}}" range="{{promotion6}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion6" value="{{promotion6[index46]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">7. 多人餐</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion7Change" value="{{index47}}" range="{{promotion7}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion7" value="{{promotion7[index47]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">8. 拼团</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion8Change" value="{{index48}}" range="{{promotion8}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion8" value="{{promotion8[index48]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">9. 秒杀</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion9Change" value="{{index49}}" range="{{promotion9}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion9" value="{{promotion9[index49]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">10. 新客立减</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion10Change" value="{{index50}}" range="{{promotion10}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion10" value="{{promotion10[index50]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">11. 橙V专享</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion11Change" value="{{index51}}" range="{{promotion11}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion11" value="{{promotion11[index51]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">12. 全渠道会员</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion12Change" value="{{index52}}" range="{{promotion12}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion12" value="{{promotion12[index52]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">13. 点评霸王餐</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion13Change" value="{{index53}}" range="{{promotion13}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion13" value="{{promotion13[index53]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view class="form_element">
-      <view class="form_title">14. 点评VIP特权</view>
-      <view class="form_element_space"></view>
-      <picker bindchange="bindPromotion14Change" value="{{index54}}" range="{{promotion14}}">
-        <view class="picker">
-          <input style="width:560rpx;" name="promotion14" value="{{promotion14[index54]}}" disabled="true" />
-        </view>
-      </picker>
-    </view>
-    <view>
-      <button  formType="submit"  class="submit-button"  data-index="3" > 完成 </button>
-    </view>
-    </view>
-  </form>
 </view>
+<view hidden="{{!ifform}}">
+  <image style="width:750rpx;height:220rpx" src="../../images/background1.png"></image>
+  <view class="container" style="background-color:#fd6267;">
+    <!-- 基础信息表单 -->
+    <form id="baseForm" class="form" bindsubmit="baseFormSubmit" bindreset="baseFormReset">
+      <input hidden="true" name="id"></input>
+      <input value='{{openid}}' hidden="true" name="openid"></input>
+      <view hidden="{{!ifbaseForm}}">
+        <view class="form_element">
+          <view class="form_title">1. 店名</view>
+          <view class="form_element_space"></view>
+          <input name="shopname" placeholder="(大众点评商铺名称-分点名)" />
+        </view>
+        <view class="form_element">
+          <view class="form_title">2. 商圈</view>
+          <view class="form_element_space"></view>
+          <picker mode="region" bindchange="bindShopRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="picker" style="display: flex;">
+              <input style="width:140rpx;" name="shopregion1" value="{{region[0]}}" disabled="true" />
+              <input style="width:140rpx;margin-left:17rpx;" name="shopregion2" value="{{region[1]}}" disabled="true" />
+              <input style="width:165rpx;margin-left:17rpx;" name="shopregion3" value="{{region[2]}}" disabled="true" />
+              <input value='{{region}}' hidden="true" name="shopregion"></input>
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">3. 店铺开业时间</view>
+          <view class="form_element_space"></view>
+          <picker mode="date" value="{{date}}" start="1990-09-01" end="2030-09-01" bindchange="bindOpenDateChange">
+            <view class="picker">
+              <input style="width:560rpx;" name="opendate" value="{{date}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">4. 店铺平米数</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindScaleChange" value="{{index1}}" range="{{scale}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="scale" value="{{scale[index1]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">5. 店内线下实际人均</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPerCapitaChange" value="{{index2}}" range="{{perCapita}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="percapita" value="{{perCapita[index2]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">6. 店铺菜系</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindStyleChange" value="{{index3}}" range="{{style}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="style" value="{{style[index3]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">7. 大众点评店铺星级</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindStarChange" value="{{index4}}" range="{{star}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="star" value="{{star[index4]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">8. 店铺总评论数</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindCommentChange" value="{{index5}}" range="{{comment}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="comment" value="{{comment[index5]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">9. 店铺类型</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindTypeChange" value="{{index6}}" range="{{type}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="type" value="{{type[index6]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">10. 店铺主要消费群体</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindConsumerChange" value="{{index7}}" range="{{consumer}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="consumer" value="{{consumer[index7]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">11. 门店经营情况</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindManageChange" value="{{index8}}" range="{{manage}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="manage" value="{{manage[index8]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">12. 开门费/天(除转让、装修)</view>
+          <view class="form_element_space"></view>
+          <input name="keymoney" placeholder="请填写开门费" />
+        </view>
+        <view class="form_element">
+          <view class="form_title">13. 关注的周边竞对商户名称</view>
+          <view class="form_element_space"></view>
+          <input name="contendshop" placeholder="请填写关注的周边竞对商户名称" />
+        </view>
+        <view class="form_element">
+          <view class="form_title">14. 目前店内月流水(不包含储值金额)</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindAccountChange" value="{{index9}}" range="{{account}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="account" value="{{account[index9]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">15. 店内会员规则</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindRuleChange" value="{{index10}}" range="{{rule}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="rule" value="{{rule[index10]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element" wx:if="{{ifpreferential}}">
+          <view class="form_title">15-1. 会员优惠体系</view>
+          <view class="form_element_space"></view>
+          <checkbox-group bindchange="checkboxPreferentialChange">
+            <label class="checkbox" wx:for="{{preferential}}">
+              <checkbox value="{{item.name}}" />{{item.value}}
+            </label>
+          </checkbox-group>
+          <input hidden="true" name="preferential" value='{{preferentialSelect}}' />
+        </view>
+        <view class="form_element">
+          <view class="form_title">16. 店铺线上推广有无预算</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindSpreadChange" value="{{index11}}" range="{{spread}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="spread" value="{{spread[index11]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element" wx:if="{{ifpromotionMoney}}">
+          <view class="form_title">16-1. 目前每月花费在线上推广费用</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotionMoneyChange" value="{{index12}}" range="{{promotionMoney}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotionmoney" value="{{promotionMoney[index12]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">17. 店铺是否开通商户通</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPassChange" value="{{index13}}" range="{{merchantPass}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass" value="{{merchantPass[index13]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">18. 是否购买过大众点评产品(可多选)</view>
+          <view class="form_element_space"></view>
+          <checkbox-group bindchange="checkboxCommentProductChange">
+            <label class="checkbox" wx:for="{{commentProduct}}">
+              <checkbox value="{{item.name}}" />{{item.value}}
+            </label>
+          </checkbox-group>
+          <input hidden="true" name="commentproduct" value='{{commentProductSelect}}' />
+
+        </view>
+        <view class="form_element">
+          <view class="form_title">19. 店铺是否开通推广通</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindCommunicationChange" value="{{index14}}" range="{{communication}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="communication" value="{{communication[index14]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element" wx:if="{{ifcommunicationBudget}}">
+          <view class="form_title">19-1. 推广通预算</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindCommunicationBudgetChange" value="{{index15}}" range="{{communicationBudget}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="communicationbudget" value="{{communicationBudget[index15]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">20. 是否采买过除大众点评其他站外流量产品(可多选)</view>
+          <view class="form_element_space"></view>
+          <checkbox-group bindchange="checkboxOtherProductChange">
+            <label class="checkbox" wx:for="{{otherProduct}}">
+              <checkbox value="{{item.name}}" />{{item.value}}
+            </label>
+          </checkbox-group>
+          <input hidden="true" name="otherproduct" value='{{otherProductSelect}}' />
+        </view>
+        <view class="form_element">
+          <view class="form_title">21. 可以接受店内活动的最大优惠</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindDiscountChange" value="{{index16}}" range="{{discount}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="discountchange" value="{{discount[index16]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">22. 店内最近一次的活动内容是(活动内容、时效、活动效果)</view>
+          <view class="form_element_space"></view>
+          <input name="activity" placeholder="请输入最近一次活动内容" />
+        </view>
+        <view class="form_element">
+          <view class="form_title">23. 当前急需解决问题</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindProblemChange" value="{{index17}}" range="{{problem}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="problem" value="{{problem[index17]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">24. 如合作线上运营团队，初期运营目标是</view>
+          <view class="form_element_space"></view>
+          <input name="objective" placeholder="请输入运营目标" />
+        </view>
+        <view>
+          <button formType="submit" class="submit-button" data-index="1"> 下一步 </button>
+        </view>
+      </view>
+      <!--商户通子表单-->
+      <!-- <form id="merchantPassForm" class="form" bindsubmit="merchantPassFormSubmit" bindreset="merchantPassFormReset" wx:if="{{ifmerchantPassForm}}"> -->
+      <view hidden="{{!ifmerchantPassForm}}">
+        <view class="form_element">
+          <view class="form_title">1. 五连图(更换周期)</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass1Change" value="{{index21}}" range="{{merchantPass1}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass1" value="{{merchantPass1[index21]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">2. 商家相册(环境、菜品)</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass2Change" value="{{index22}}" range="{{merchantPass2}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass2" value="{{merchantPass2[index22]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">3. 主图视频</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass3Change" value="{{index23}}" range="{{merchantPass3}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass3" value="{{merchantPass3[index23]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">4. 二楼视频</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass4Change" value="{{index24}}" range="{{merchantPass4}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass4" value="{{merchantPass4[index24]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">5. 商家招牌菜</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass5Change" value="{{index25}}" range="{{merchantPass5}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass5" value="{{merchantPass5[index25]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">6. 商家新鲜事</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass6Change" value="{{index26}}" range="{{merchantPass6}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass6" value="{{merchantPass6[index26]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">7. 品牌故事</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass7Change" value="{{index27}}" range="{{merchantPass7}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass7" value="{{merchantPass7[index27]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">8. 预定</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass8Change" value="{{index28}}" range="{{merchantPass8}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass8" value="{{merchantPass8[index28]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">9. 排队</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass9Change" value="{{index29}}" range="{{merchantPass9}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass9" value="{{merchantPass9[index29]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">10. 达人探店</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass10Change" value="{{index30}}" range="{{merchantPass10}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass10" value="{{merchantPass10[index30]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">11. 消费者评论维护</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindMerchantPass11Change" value="{{index31}}" range="{{merchantPass11}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="merchantpass11" value="{{merchantPass11[index31]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view>
+          <button formType="submit" class="submit-button" data-index="2"> 下一步 </button>
+        </view>
+      </view>
+      <!--优惠促销子表单-->
+      <!-- <form id="promotionForm" class="form" bindsubmit="promotionFormSubmit" bindreset="promotionFormReset" wx:if="{{ifpromotionForm}}"> -->
+      <view hidden="{{!ifpromotionForm}}">
+        <view class="form_element">
+          <view class="form_title">1. 优惠促销</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion1Change" value="{{index41}}" range="{{promotion1}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion1" value="{{promotion1[index41]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">2. 优惠买单</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion2Change" value="{{index42}}" range="{{promotion2}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion2" value="{{promotion2[index42]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">3. 代金券</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion3Change" value="{{index43}}" range="{{promotion3}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion3" value="{{promotion3[index43]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">4. 单人餐</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion4Change" value="{{index44}}" range="{{promotion4}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion4" value="{{promotion4[index44]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">5. 双人餐</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion5Change" value="{{index45}}" range="{{promotion5}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion5" value="{{promotion5[index45]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">6. 四人餐</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion6Change" value="{{index46}}" range="{{promotion6}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion6" value="{{promotion6[index46]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">7. 多人餐</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion7Change" value="{{index47}}" range="{{promotion7}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion7" value="{{promotion7[index47]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">8. 拼团</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion8Change" value="{{index48}}" range="{{promotion8}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion8" value="{{promotion8[index48]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">9. 秒杀</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion9Change" value="{{index49}}" range="{{promotion9}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion9" value="{{promotion9[index49]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">10. 新客立减</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion10Change" value="{{index50}}" range="{{promotion10}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion10" value="{{promotion10[index50]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">11. 橙V专享</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion11Change" value="{{index51}}" range="{{promotion11}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion11" value="{{promotion11[index51]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">12. 全渠道会员</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion12Change" value="{{index52}}" range="{{promotion12}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion12" value="{{promotion12[index52]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">13. 点评霸王餐</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion13Change" value="{{index53}}" range="{{promotion13}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion13" value="{{promotion13[index53]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view class="form_element">
+          <view class="form_title">14. 点评VIP特权</view>
+          <view class="form_element_space"></view>
+          <picker bindchange="bindPromotion14Change" value="{{index54}}" range="{{promotion14}}">
+            <view class="picker">
+              <input style="width:560rpx;" name="promotion14" value="{{promotion14[index54]}}" disabled="true" />
+            </view>
+          </picker>
+        </view>
+        <view>
+          <button formType="submit" class="submit-button" data-index="3"> 完成 </button>
+        </view>
+      </view>
+    </form>
+  </view>
 </view>

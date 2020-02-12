@@ -8,14 +8,19 @@ Page({
     openid: "",
     logged: false,
     takeSession: false,
-    //控制当前人是否填写过商铺信息，未填写过为true，显示表单页，填写过为false，显示诊断结果页
-    ifform:true,
+    //控制诊断结果，根据是否开通商户通和优惠促销判断到底显示哪个诊断结果模板页
+    ifresult1:false,
+    ifresult2: false,
+    ifresult3: false,
+    //控制当前人是否填写过商铺信息，未填写过为isform为true，显示表单页，填写过为ifresult为false，显示诊断结果页
+    ifform: false,
+    ifresult:false,
     requestResult: '',
     region: ['北京市', '北京市', '海淀区'],
     customItem: '全部',
     date: '2020-01-01',
     //会员优惠体系存储变量
-    preferentialSelect:[],
+    preferentialSelect: [],
     //控制优惠体系显示开关
     ifpreferential: false,
     ifpromotionMoney: false,
@@ -26,7 +31,33 @@ Page({
     ifpromotionForm: false,
     //记录复选框的最终选择值
     commentProductSelect: "",
-    otherProductSelect:"",
+    otherProductSelect: "",
+    //诊断结果时存储结果
+    diagnoseMerchantpass1: "",
+    diagnoseMerchantpass2: "",
+    diagnoseMerchantpass3: "",
+    diagnoseMerchantpass4: "",
+    diagnoseMerchantpass5: "",
+    diagnoseMerchantpass6: "",
+    diagnoseMerchantpass7: "",
+    diagnoseMerchantpass8: "",
+    diagnoseMerchantpass9: "",
+    diagnoseMerchantpass10: "",
+    diagnoseMerchantpass11: "",
+    diagnosePromotion1: "",
+    diagnosePromotion2: "",
+    diagnosePromotion3: "",
+    diagnosePromotion4: "",
+    diagnosePromotion5: "",
+    diagnosePromotion6: "",
+    diagnosePromotion7: "",
+    diagnosePromotion8: "",
+    diagnosePromotion9: "",
+    diagnosePromotion10: "",
+    diagnosePromotion11: "",
+    diagnosePromotion12: "",
+    diagnosePromotion13: "",
+    diagnosePromotion14: "",
     //店铺平米数数组
     scale: [
       '100平米以下',
@@ -828,33 +859,37 @@ Page({
           })
         }
       }
-    } else if (index == "2") { //处于商户通表单
-      if (this.data.commentProductSelect.indexOf("旺铺宝") >= 0) { //同时也开通了旺铺宝
+    } else if (index == "2") { //处于商户通表单,只要开通商户通，也要填写优惠促销
         this.setData({
           ifbaseForm: false,
           ifmerchantPassForm: false,
           ifpromotionForm: true,
         })
         this.goTop()
-      } else { //开通了商户通未开通旺铺宝，下一步提交
-        this.baseFormSubmitToServer(e.detail.value)
-      }
+
     } else { //优惠促销完成填写并最终提交
       this.baseFormSubmitToServer(e.detail.value)
     }
   },
   baseFormSubmitToServer: function(form) {
+    let that=this
     //部分表单数据赋值处理
-    console.log("form",this.data.form_data)
+    console.log("form", this.data.form_data)
     wx.request({
       url: 'https://suzhan.qicp.vip/ftwork/shop/insertShop',
-      data:
-       {
+      data: {
         "ftShopbase": JSON.stringify(form)
 
       },
       success: function(res) {
         console.log(res.data)
+        //将当前数据转换为诊断结果
+        console.log(form)
+        that.diagnose(form)
+        //根据填写情况判断跳转页
+        console.log("s")
+        that.toResult()
+        console.log("22")
       },
       error: function(res) {
         console.log(res);
@@ -884,28 +919,38 @@ Page({
                 openid: res.result.openid
               })
               this.data.openid = res.result.openid
-              
+
               app.globalData.openid = res.result.openid
+              var that = this
               //将该用户历史填写商户信息回显
-              // wx.request({
-              //   url: 'https://suzhan.qicp.vip/ftwork/shop/diagnoseShop',
-              //   data:
-              //   {
-              //     "openid": this.data.openid
+              wx.request({
+                url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
+                data: {
+                  "openid": this.data.openid
 
-              //   },
-              //   success: function (res) {
-              //     console.log(res.data)
-              //     if(res.data!=""){
-              //       //如果填写过店铺信息，直接显示诊断结果页
-              //       // 没写完！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-              //       }
-              //   },
-              //   error: function (res) {
-              //     console.log(res);
-              //   }
+                },
+                success: function(res) {
+                  console.log(res.data)
+                  if (res.data != "") {
+                    //如果填写过店铺信息，直接显示诊断结果页
+                    //处理转换诊断结果
+                    that.diagnose(res.data)
+                    //根据填写情况判断进入哪个诊断页面
+                    that.toResult()
 
-              // })
+                  }else{
+                    that.setData({
+                      //未填写过店铺信息，显示基础表单页
+                      ifform: true,
+                      ifesult: false,
+                    })
+                  }
+                },
+                error: function(res) {
+                  console.log(res);
+                }
+
+              })
             },
             fail: err => {
               console.error('[云函数] [login] 调用失败', err)
@@ -922,10 +967,512 @@ Page({
         }
       }
     })
-    
+
 
   },
+  //根据店铺填写情况判断跳转目标结果页
+  toResult(){
+    console.log("sad",this.data.merchantPass1,"asd",this.data.promotion1)
+    if (this.data.diagnoseMerchantpass1!=""){//开通了商户通，则显示全部诊断结果
+      console.log("1")
+      this.setData({
+        ifform: false,
+        ifresult:true,
+        ifresult1:true
+      });
+    }else{//未开通商户通
+      if (this.data.diagnosePromotion1!=""){//未开通商户通，但开通了旺铺宝，则显示优惠促销结果页
+        console.log("2")
+        this.setData({
+          ifform: false,
+          ifresult: true,
+          ifresult2: true
+        });
+      }else{//商户通和旺铺宝均未开通，则显示第三结果页
+      console.log("3")
+        this.setData({
+          ifform: false,
+          ifresult: true,
+          ifresult3: true
+        });
+      }
 
+    }
+  },
+  //将填写的店铺信息转换为诊断结果并赋值
+  diagnose(data) {
+    switch (data.merchantpass1) {
+      case "每周更新":
+        this.setData({
+          diagnoseMerchantpass1: "对比更新后浏览量转化率"
+        });
+        break;
+      case "每月更新":
+        this.setData({
+          diagnoseMerchantpass1: "对比更新后浏览量转化率"
+        });
+        break;
+      case "配合店内有活动时更新":
+        this.setData({
+          diagnoseMerchantpass1: "对比更新后浏览量转化率"
+        });
+        break;
+      case "很久没更新过":
+        this.setData({
+          diagnoseMerchantpass1: "尽快更新五连图"
+        });
+        break;
+    }
+    switch (data.merchantpass2) {
+      case "已上传20张店内环境、菜品照片":
+        this.setData({
+          diagnoseMerchantpass2: "继续保持"
+        });
+        break;
+      case "上传后从未更新过":
+        this.setData({
+          diagnoseMerchantpass2: "更新店内最新环境、菜品照片"
+        });
+        break;
+      case "不知道在哪上传":
+        this.setData({
+          diagnoseMerchantpass2: "更新店内最新环境、菜品照片"
+        });
+        break;
+    }
+    switch (data.merchantpass3) {
+      case "已上传页面显示":
+        this.setData({
+          diagnoseMerchantpass3: "继续保持"
+        });
+        break;
+      case "店内未拍摄视频":
+        this.setData({
+          diagnoseMerchantpass3: "尽快上传突出品牌、环境、菜品的视频"
+        });
+        break;
+      case "不知道在哪上传":
+        this.setData({
+          diagnoseMerchantpass3: "尽快上传突出品牌、环境、菜品的视频"
+        });
+        break;
+    }
+    switch (data.merchantpass4) {
+      case "已上传页面显示":
+        this.setData({
+          diagnoseMerchantpass4: "继续保持"
+        });
+        break;
+      case "店内未拍摄视频":
+        this.setData({
+          diagnoseMerchantpass4: "尽快上传突出品牌、环境、菜品的视频"
+        });
+        break;
+      case "不知道在哪上传":
+        this.setData({
+          diagnoseMerchantpass4: "尽快上传突出品牌、环境、菜品的视频"
+        });
+        break;
+    }
+    switch (data.merchantpass5) {
+      case "20个菜品图、配合菜品动图、视频":
+        this.setData({
+          diagnoseMerchantpass5: "继续保持"
+        });
+        break;
+      case "已上传部分菜品照片":
+        this.setData({
+          diagnoseMerchantpass5: "更新20个商家招牌菜品配合动图、视频效果更佳"
+        });
+        break;
+      case "不知道在哪上传":
+        this.setData({
+          diagnoseMerchantpass5: "更新20个商家招牌菜品配合动图、视频效果更佳"
+        });
+        break;
+    }
+    switch (data.merchantpass6) {
+      case "每周更新":
+        this.setData({
+          diagnoseMerchantpass6: "继续保持"
+        });
+        break;
+      case "每月更新":
+        this.setData({
+          diagnoseMerchantpass6: "每月更新2-3次可配合活动"
+        });
+        break;
+      case "配合店内有活动时更新":
+        this.setData({
+          diagnoseMerchantpass6: "继续保持"
+        });
+        break;
+      case "很久没有更新过":
+        this.setData({
+          diagnoseMerchantpass6: "尽快更新商家新鲜事"
+        });
+        break;
+    }
+    switch (data.merchantpass7) {
+      case "已上传页面显示":
+        this.setData({
+          diagnoseMerchantpass7: "继续保持"
+        });
+        break;
+      case "对品牌背景、发展不太了解":
+        this.setData({
+          diagnoseMerchantpass7: "尽快更新品牌故事"
+        });
+        break;
+      case "不知道在哪上传":
+        this.setData({
+          diagnoseMerchantpass7: "尽快更新品牌故事"
+        });
+        break;
+    }
+    switch (data.merchantpass8) {
+      case "已开通预定功能":
+        this.setData({
+          diagnoseMerchantpass8: "继续保持"
+        });
+        break;
+      case "认为此功能没用":
+        this.setData({
+          diagnoseMerchantpass8: "尽快开通预定功能"
+        });
+        break;
+      case "不知道在哪开通":
+        this.setData({
+          diagnoseMerchantpass8: "尽快开通预定功能"
+        });
+        break;
+    }
+    switch (data.merchantpass9) {
+      case "已开通排队功能":
+        this.setData({
+          diagnoseMerchantpass9: "继续保持"
+        });
+        break;
+      case "认为此功能没用":
+        this.setData({
+          diagnoseMerchantpass9: "尽快开通排队功能"
+        });
+        break;
+      case "不知道在哪开通":
+        this.setData({
+          diagnoseMerchantpass9: "尽快开通排队功能"
+        });
+        break;
+    }
+    switch (data.merchantpass10) {
+      case "已开通":
+        this.setData({
+          diagnoseMerchantpass10: "继续保持"
+        });
+        break;
+      case "认为此功能没用":
+        this.setData({
+          diagnoseMerchantpass10: "尽快开通达人探店"
+        });
+        break;
+      case "不知道在哪开通":
+        this.setData({
+          diagnoseMerchantpass10: "尽快开通达人探店"
+        });
+        break;
+    }
+    switch (data.merchantpass11) {
+      case "每天回复":
+        this.setData({
+          diagnoseMerchantpass11: "继续保持"
+        });
+        break;
+      case "每周回复":
+        this.setData({
+          diagnoseMerchantpass11: "建议3天内回复效果最佳"
+        });
+        break;
+      case "只回复差评":
+        this.setData({
+          diagnoseMerchantpass11: "回复所有有效评价"
+        });
+        break;
+      case "从不回复":
+        this.setData({
+          diagnoseMerchantpass11: "尽快回复消费者评论"
+        });
+        break;
+    }
+    switch (data.promotion1) {
+      case "有活动时发布":
+        this.setData({
+          diagnosePromotion1: "继续保持"
+        });
+        break;
+      case "觉得该功能没用":
+        this.setData({
+          diagnosePromotion1: "尽快使用该功能"
+        });
+        break;
+      case "不知道在哪发布":
+        this.setData({
+          diagnosePromotion1: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion2) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion2: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion2: "尽快使用该功能"
+        });
+        break;
+      case "从未使用过":
+        this.setData({
+          diagnosePromotion2: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion3) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion3: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion3: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion3: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion4) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion4: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion4: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion4: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion5) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion5: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion5: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion5: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion6) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion6: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion6: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion6: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+      case "从未发布过":
+        this.setData({
+          diagnosePromotion6: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion7) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion7: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion7: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion7: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+      case "从未发布过":
+        this.setData({
+          diagnosePromotion7: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion8) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion8: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion8: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion8: "调整套餐产品或折扣，使用该功能"
+        });
+        break;
+      case "从未发布过":
+        this.setData({
+          diagnosePromotion8: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion9) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion9: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion9: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion9: "调整提报产品，使用该功能"
+        });
+        break;
+      case "不清楚规则，从未发布过":
+        this.setData({
+          diagnosePromotion9: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion10) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion10: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion10: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion10: "调整提报产品，使用该功能"
+        });
+        break;
+      case "不清楚规则，从未发布过":
+        this.setData({
+          diagnosePromotion10: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion11) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion11: "继续保持"
+        });
+        break;
+      case "店内不设置任何优惠":
+        this.setData({
+          diagnosePromotion11: "尽快使用该功能"
+        });
+        break;
+      case "销量不好已下线":
+        this.setData({
+          diagnosePromotion11: "调整提报产品，使用该功能"
+        });
+        break;
+      case "不清楚规则，从未发布过":
+        this.setData({
+          diagnosePromotion11: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion12) {
+      case "已发布":
+        this.setData({
+          diagnosePromotion12: "继续保持"
+        });
+        break;
+      case "效果不明显、已下线":
+        this.setData({
+          diagnosePromotion12: "对比上线前后领取、复购率变化"
+        });
+        break;
+      case "不清楚规则，从未发布过":
+        this.setData({
+          diagnosePromotion12: "尽快使用该功能"
+        });
+        break;
+    }
+    switch (data.promotion13) {
+      case "发布过1期以上，效果明显":
+        this.setData({
+          diagnosePromotion13: "对比霸王餐前后浏览量、星级、评论数量变化"
+        });
+        break;
+      case "发布过1期、觉得没效果不准备再使用":
+        this.setData({
+          diagnosePromotion13: "对比霸王餐前后浏览量、星级、评论数量变化"
+        });
+        break;
+      case "不清楚规则、从未发布过":
+        this.setData({
+          diagnosePromotion13: "尽快提报一期"
+        });
+        break;
+    }
+    switch (data.promotion14) {
+      case "发布过1期以上，效果明显":
+        this.setData({
+          diagnosePromotion14: "对比霸王餐前后浏览量、星级、评论数量变化"
+        });
+        break;
+      case "发布过1期、觉得没效果不准备再使用":
+        this.setData({
+          diagnosePromotion14: "对比霸王餐前后浏览量、星级、评论数量变化"
+        });
+        break;
+      case "不清楚规则、从未发布过":
+        this.setData({
+          diagnosePromotion14: "尽快提报一期"
+        });
+        break;
+    }
+
+  },
   onGetUserInfo: function(e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
