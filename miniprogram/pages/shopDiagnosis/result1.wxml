@@ -94,7 +94,7 @@
         <image class="result_element_images" src="../../images/nu-12.png"></image>
       </view>
       <view>
-        <text class="result_element_title">优惠促销：<text class="result_element_space" >{{promotion1}}</text></text>
+        <text class="result_element_title">优惠促销：<text class="result_element_space" >{{diagnosePromotion1}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -102,7 +102,7 @@
         <image class="result_element_images" src="../../images/nu-13.png"></image>
       </view>
       <view>
-        <text class="result_element_title">优惠买单：<text class="result_element_space" >{{promotion2}}</text></text>
+        <text class="result_element_title">优惠买单：<text class="result_element_space" >{{diagnosePromotion2}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -110,7 +110,7 @@
         <image class="result_element_images" src="../../images/nu-14.png"></image>
       </view>
       <view>
-        <text class="result_element_title">代金券：<text class="result_element_space" >{{promotion3}}</text></text>
+        <text class="result_element_title">代金券：<text class="result_element_space" >{{diagnosePromotion3}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -118,7 +118,7 @@
         <image class="result_element_images" src="../../images/nu-15.png"></image>
       </view>
       <view>
-        <text class="result_element_title">单人餐：<text class="result_element_space" >{{promotion4}}</text></text>
+        <text class="result_element_title">单人餐：<text class="result_element_space" >{{diagnosePromotion4}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -126,7 +126,7 @@
         <image class="result_element_images" src="../../images/nu-16.png"></image>
       </view>
       <view>
-        <text class="result_element_title">双人餐：<text class="result_element_space" >{{promotion5}}</text></text>
+        <text class="result_element_title">双人餐：<text class="result_element_space" >{{diagnosePromotion5}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -134,7 +134,7 @@
         <image class="result_element_images" src="../../images/nu-17.png"></image>
       </view>
       <view>
-        <text class="result_element_title">四人餐：<text class="result_element_space" >{{promotion6}}</text></text>
+        <text class="result_element_title">四人餐：<text class="result_element_space" >{{diagnosePromotion6}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -142,7 +142,7 @@
         <image class="result_element_images" src="../../images/nu-18.png"></image>
       </view>
       <view>
-        <text class="result_element_title">多人餐：<text class="result_element_space" >{{promotion7}}</text></text>
+        <text class="result_element_title">多人餐：<text class="result_element_space" >{{diagnosePromotion7}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -150,7 +150,7 @@
         <image class="result_element_images" src="../../images/nu-19.png"></image>
       </view>
       <view>
-        <text class="result_element_title">拼团：<text class="result_element_space" >{{promotion8}}</text></text>
+        <text class="result_element_title">拼团：<text class="result_element_space" >{{diagnosePromotion8}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -158,7 +158,7 @@
         <image class="result_element_images" src="../../images/nu-20.png"></image>
       </view>
       <view>
-        <text class="result_element_title">秒杀：<text class="result_element_space" >{{promotion9}}</text></text>
+        <text class="result_element_title">秒杀：<text class="result_element_space" >{{diagnosePromotion9}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -166,7 +166,7 @@
         <image class="result_element_images" src="../../images/nu-21.png"></image>
       </view>
       <view>
-        <text class="result_element_title">新客立减：<text class="result_element_space" >{{promotion10}}</text></text>
+        <text class="result_element_title">新客立减：<text class="result_element_space" >{{diagnosePromotion10}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -174,7 +174,7 @@
         <image class="result_element_images" src="../../images/nu-22.png"></image>
       </view>
       <view>
-        <text class="result_element_title">橙V专享：<text class="result_element_space" >{{promotion11}}</text></text>
+        <text class="result_element_title">橙V专享：<text class="result_element_space" >{{diagnosePromotion11}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -182,7 +182,7 @@
         <image class="result_element_images" src="../../images/nu-23.png"></image>
       </view>
       <view>
-        <text class="result_element_title">全渠道会员：<text class="result_element_space" >{{promotion12}}</text></text>
+        <text class="result_element_title">全渠道会员：<text class="result_element_space" >{{diagnosePromotion12}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -190,7 +190,7 @@
         <image class="result_element_images" src="../../images/nu-24.png"></image>
       </view>
       <view>
-        <text class="result_element_title">点评霸王餐：<text class="result_element_space" >{{promotion13}}</text></text>
+        <text class="result_element_title">点评霸王餐：<text class="result_element_space" >{{diagnosePromotion13}}</text></text>
       </view>
     </view>
     <view class="result_element">
@@ -198,6 +198,6 @@
         <image class="result_element_images" src="../../images/nu-25.png"></image>
       </view>
       <view>
-        <text class="result_element_title">点评VIP特权：<text class="result_element_space" >{{promotion14}}</text></text>
+        <text class="result_element_title">点评VIP特权：<text class="result_element_space" >{{diagnosePromotion14}}</text></text>
       </view>
     </view>

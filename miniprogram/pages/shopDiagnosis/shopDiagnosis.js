@@ -872,6 +872,12 @@ Page({
     }
   },
   baseFormSubmitToServer: function(form) {
+    this.goTop()
+    //将当前数据转换为诊断结果
+    console.log(form)
+    this.diagnose(form)
+    //根据填写情况判断跳转页
+    this.toResult()
     let that=this
     //部分表单数据赋值处理
     console.log("form", this.data.form_data)
@@ -882,14 +888,7 @@ Page({
 
       },
       success: function(res) {
-        console.log(res.data)
-        //将当前数据转换为诊断结果
-        console.log(form)
-        that.diagnose(form)
-        //根据填写情况判断跳转页
-        console.log("s")
-        that.toResult()
-        console.log("22")
+
       },
       error: function(res) {
         console.log(res);
