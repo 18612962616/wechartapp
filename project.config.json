@@ -61,6 +61,25 @@
 					"id": -1,
 					"name": "pages/shopDiagnosis/shopDiagnosis",
 					"pathName": "pages/shopDiagnosis/shopDiagnosis",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/content",
+					"pathName": "pages/index/content",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/content/content",
+					"pathName": "pages/index/content/content",
 					"scene": null
 				}
 			]

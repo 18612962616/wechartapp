@@ -9,7 +9,13 @@ Page({
     takeSession: false,
     requestResult: ''
   },
-
+toContent(e){
+  let id = e.currentTarget.dataset.id;
+  //如何放id还没写！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+  wx.navigateTo({
+    url: 'content/content?id='+id+'',
+  })
+},
   onLoad: function() {
     if (!wx.cloud) {
       wx.redirectTo({
