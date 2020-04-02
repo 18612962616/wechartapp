@@ -882,7 +882,8 @@ Page({
     //部分表单数据赋值处理
     console.log("form", this.data.form_data)
     wx.request({
-      url: 'https://suzhan.qicp.vip/ftwork/shop/insertShop',
+      // url: 'https://suzhan.qicp.vip/ftwork/shop/insertShop',
+      url: app.globalData.URL + 'shop/insertShop',
       data: {
         "ftShopbase": JSON.stringify(form)
 
@@ -923,7 +924,8 @@ Page({
               var that = this
               //将该用户历史填写商户信息回显
               wx.request({
-                url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
+                // url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
+                url: app.globalData.URL + 'shop/getShop',
                 data: {
                   "openid": this.data.openid
 

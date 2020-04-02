@@ -2,34 +2,42 @@ const app = getApp()
 
 Page({
   data: {
-
+    details: '1.本产品适用于餐饮、娱乐或其他商业用途',
+    referenceprice: '',
+    benefit: '',
+    category: '',
+    contact: ''
 
   },
-    onLoad: function (options) {
-      console.log(options.id);
-      //接收id去后台查询详情，然后放页面，还没写！！！！！！！！！！！！！！！！！！！！！！！！！！
+  onLoad: function (options) {
+    var that = this;
+    console.log(options.id);
+    //接收id去后台查询详情，然后放页面，还没写！！！！！！！！！！！！！！！！！！！！！！！！！！
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
+    wx.request({
+      url: app.globalData.URL + 'serviceAdded/selectByPrimaryKey',
+      data: {
+        "id": options.id
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          details: res.data.details,
+          referenceprice: res.data.valueaddedservice.referenceprice,
+          benefit: res.data.valueaddedservice.benefit,
+          category: res.data.valueaddedservice.category,
+          contact: res.data.valueaddedservice.contact
+        })
+      },
+      error: function (res) {
+        console.log(res);
+      }
+    })
 
-    // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           this.setData({
-    //             avatarUrl: res.userInfo.avatarUrl,
-    //             userInfo: res.userInfo
-    //           })
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
 })

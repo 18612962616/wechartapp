@@ -21,13 +21,13 @@
       <text>推广方式选择</text>
     </view>
     <view style="margin-top:36rpx;width:100%">
-      <image src="../../images/index-tu-2.png" bindtap="toContent" data-id='' style="width:95%;height:181rpx;"></image>
+      <image src="../../images/index-tu-2.png" bindtap="toContent" data-id='3c1f9f27acb74e859a6cd271b9674e7a' style="width:95%;height:181rpx;"></image>
     </view>
     <view style="margin-top:36rpx;width:100%">
-      <image src="../../images/index-tu-3.png" bindtap="toContent" data-id='' style="width:95%;height:181rpx;"></image>
+      <image src="../../images/index-tu-3.png" bindtap="toContent" data-id='9a1204dff723478c9224c379b70e00ee' style="width:95%;height:181rpx;"></image>
     </view>
     <view style="margin-top:36rpx;width:100%">
-      <image src="../../images/index-tu-4.png" bindtap="toContent" data-id='' style="width:95%;height:181rpx;"></image>
+      <image src="../../images/index-tu-4.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:95%;height:181rpx;"></image>
     </view>
     <view style="margin-top:36rpx;width:100%">
       <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='' style="width:45%;height:181rpx;"></image>

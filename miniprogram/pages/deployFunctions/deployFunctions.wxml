@@ -1,7 +1,190 @@
 <!--pages/deployFunctions/deployFunctions.wxml-->
 <view class="container">
+	<ec-canvas id="mychart" canvas-id="mychart-bar" ec="{{ec}}"></ec-canvas>
+	<view class="hang">
+		<view class="hang-hang">
+			<view style="text-align: center">
+				<text class="hang-hang-text">{{pageviews}}</text>
+			</view>
+			<view style="text-align: center">
+				<text class="hang-hang-front">本周浏览量</text>
+			</view>
+		</view>
+		<view class="view-line"></view>
+		<view class="hang-hang">
+			<view style="text-align: center">
+				<text class="hang-hang-text">{{pageviews}}</text>
+			</view>
+			<view style="text-align: center">
+				<text class="hang-hang-front">历史最高曝光数</text>
+			</view>
+		</view>
+		<view class="view-line"></view>
+		<view class="hang-hang">
+			<view style="text-align: center">
+				<text class="hang-hang-text">{{click}}</text>
+			</view>
+			<view style="text-align: center">
+				<text class="hang-hang-front">历史最高点击量</text>
+			</view>
+		</view>
 
-  <view class="list">
+	</view>
+	<view class='g_con'>
+
+		<!-- <view class='topExpress'>
+			<view class='topExpress-right'>
+				<view class='topExpress-right-top'>历史操作记录</view>
+			</view>
+		</view> -->
+
+		<!-- 物流时间轴 -->
+		<view class='expressRecord'>
+			<!-- 顶部收货地址 -->
+			<!-- <view class='expressRecord-getAddress'>
+				<view class='expressRecord-top'>
+					<view class='getAddress-icon'>
+						收
+					</view>
+					<view class='getAddress-text'>[收货地址] 广东省深圳市南山区 南山街道 亿利达大厦</view>
+				</view>
+			</view> -->
+
+			<!-- 顶部收货地址半个时间轴线 -->
+			<!-- <view class='noReach-online-top-close'></view> -->
+
+
+			<!-- 一个一周的操作 -->
+			<block wx:for="{{operationData}}" wx:for-item="item">
+				<view class='expressRecord-single-close'>
+
+					<!-- 左边子容器 -->
+					<view class='expressRecord-single-noReach-online-top-close'>
+						<!-- 正在进行的时间轴上半个时间线 -->
+						<view class='online-bottom'></view>
+						<!-- 正在进行的时间轴点 -->
+						<view class='dot-closing'></view>
+						<!-- 正在进行的时间轴下半个时间线 -->
+						<view class='online-bottom'></view>
+					</view>
+
+					<!-- 右边子容器 -->
+					<view class='expressRecord-text'>
+						<view class='expressRecord-statusing'>{{item.text}}</view>
+						<!-- <view class='expressRecord-status-addressing'>武汉转运中心公司 已发出，下一站 深圳转运中心</view> -->
+					</view>
+
+					<!-- 相对父级容器绝对定位的日期 -->
+					<view class='expressRecord-dating'>
+						<view class='expressRecord-date-text'>
+							{{item.month}}
+						</view>
+						<view class='expressRecord-date-time'>
+							{{item.day}}
+						</view>
+					</view>
+
+				</view>
+			</block>
+
+
+			<!-- 单个物流记录点时间轴：已经过去的物流状态 -->
+			<!-- <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close'></view>
+        <view class='online-bottom'></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status'></view>
+        <view class='expressRecord-status-address'>武汉转运中心公司 已收入</view>
+      </view>
+
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+          昨天
+        </view>
+        <view class='expressRecord-date-time'>
+          20:37
+        </view>
+      </view>
+    </view> 
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close'></view>
+        <view class='online-bottom'></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status'></view>
+        <view class='expressRecord-status-address'>湖北省孝感市汉川市公司 已打包</view>
+      </view>
+
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+          昨天
+        </view>
+        <view class='expressRecord-date-time'>
+          14:37
+        </view>
+      </view>
+    </view>
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close'></view>
+        <view class='online-bottom'></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status'>已揽件</view>
+        <view class='expressRecord-status-address'>湖北省孝感市汉川市公司 已收件</view>
+      </view>
+
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+          昨天
+        </view>
+        <view class='expressRecord-date-time'>
+          14:17
+        </view>
+      </view>
+    </view>
+
+    <view class='expressRecord-single-close'>
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class='online-top-close'></view>
+        <view class='dot-close'></view>
+        起始位置，下半个时间轴线不用
+        <view class='online-bottom-start'></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status'>已发货</view>
+        <view class='expressRecord-status-address'>卖家发货</view>
+      </view>
+
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+          昨天
+        </view>
+        <view class='expressRecord-date-time'>
+          13:50
+        </view>
+      </view>
+    </view>  -->
+		</view>
+	</view>
+	<!-- <canvas
+  style="width: 400px; height: 500px;"
+  canvas-id="yueEle"
+  binderror="canvasIdErrorCallback"
+></canvas> -->
+	<!-- <view class="list">
     <view class="list-item">
       <text class="black">调用失败</text>
     </view>
@@ -15,7 +198,6 @@
     <text class="p">1. 确保已通过工具栏云开发入口开通云开发</text>
     <text class="p">2. 在 cloudfunctions/login 目录上右键上传并部署</text>
     <text class="p">3. 回到首页，重新点击获取 openid</text>
-  </view>
+  </view> -->
 
 </view>
-
