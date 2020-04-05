@@ -30,12 +30,12 @@
       <image src="../../images/index-tu-4.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:95%;height:181rpx;"></image>
     </view>
     <view style="margin-top:36rpx;width:100%">
-      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='' style="width:45%;height:181rpx;"></image>
-      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='' style="width:45%;height:181rpx;margin-left:5%"></image>
+      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:45%;height:181rpx;"></image>
+      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:45%;height:181rpx;margin-left:5%"></image>
     </view>
     <view style="margin-top:36rpx;width:100%">
-      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='' style="width:45%;height:181rpx;"></image>
-      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='' style="width:45%;height:181rpx;margin-left:5%"></image>
+      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:45%;height:181rpx;"></image>
+      <image src="../../images/index-tu-5.png" bindtap="toContent" data-id='b917de5852f442c28e214937fbcbe793' style="width:45%;height:181rpx;margin-left:5%"></image>
     </view>
   </view>
 
