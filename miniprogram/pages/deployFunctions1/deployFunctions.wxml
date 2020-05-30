@@ -1,38 +1,77 @@
 <!--pages/deployFunctions/deployFunctions.wxml-->
-<view class="container">
-	<!-- echarts图 -->
-	<ec-canvas id="mychart" canvas-id="mychart-bar" ec="{{ec}}"></ec-canvas>
+<view class="container" style="background: white;">
+<view class="tui-fixed-y">
+<scroll-view style="height:100vh" scroll-y="true" scroll-into-view="{{pageFlag}}" scroll-with-animation="true">
+	<!-- 顶部时间条 -->
+	<view class='title' style="width: 100%">
+		<view class="tongji">
+			<text style="color:#737373; font-size:0.9em;">统计截止至</text>
+			<text style="color:#737373; font-size:0.9em;"> {{date}}</text>
+		</view>
+		<view class="bb">
+			<button bindtap="getStatus">查看服务记录</button>
+		</view>
+	</view>
 
+	<!-- 浏览量等 -->
 	<view class="hang">
-		<view class="hang-hang">
-			<view style="text-align: center">
-				<text class="hang-hang-text">{{pageviews}}</text>
+		<view class="hang-hang1">
+			<view style="text-align: center; height: 50rpx">
+				<text class="hang-hang-bijiaowz">较上周</text>
+				<text class="hang-hang-bijiao">{{interestnumberStrComp}}</text>
 			</view>
-			<view style="text-align: center">
-				<text class="hang-hang-front">本周浏览量</text>
+			<view style="text-align: center; height: 50rpx; margin-bottom: 8rpx;">
+				<text class="hang-hang-text">{{interestnumberStr}}</text>
 			</view>
-		</view>
-		<view class="view-line"></view>
-		<view class="hang-hang">
-			<view style="text-align: center">
-				<text class="hang-hang-text">{{pageviews}}</text>
-			</view>
-			<view style="text-align: center">
-				<text class="hang-hang-front">历史最高曝光数</text>
+			<view class="hang-hang-front" style="text-align: center;">本周感兴趣
+				<!-- <text class="hang-hang-front">本周浏览量</text> -->
 			</view>
 		</view>
-		<view class="view-line"></view>
-		<view class="hang-hang">
-			<view style="text-align: center">
-				<text class="hang-hang-text">{{click}}</text>
+		<!-- <view class="view-line"></view> -->
+		<view class="hang-hang2">
+			<view style="text-align: center; height: 50rpx">
+				<text class="hang-hang-bijiaowz">较上周</text>
+				<text class="hang-hang-bijiao">{{pageviewsStrComp}}</text>
 			</view>
-			<view style="text-align: center">
-				<text class="hang-hang-front">历史最高点击量</text>
+			<view style="text-align: center; height: 50rpx; margin-bottom: 8rpx;">
+				<text class="hang-hang-text">{{pageviewsStr}}</text>
+			</view>
+			<view class="hang-hang-front" style="text-align: center;">本周浏览量
+				<!-- <text class="hang-hang-front">本周浏览量</text> -->
+			</view>
+		</view>
+
+		<!-- <view class="view-line"></view> -->
+		<view class="hang-hang3">
+			<view style="text-align: center; height: 50rpx">
+				<text class="hang-hang-bijiaowz">较上周</text>
+				<text class="hang-hang-bijiao">{{collectionnumberStrComp}}</text>
+			</view>
+			<view style="text-align: center; height: 50rpx; margin-bottom: 8rpx;">
+				<text class="hang-hang-text">{{collectionnumberStr}}</text>
+			</view>
+			<view class="hang-hang-front" style="text-align: center;">本周收藏数
+				<!-- <text class="hang-hang-front">本周浏览量</text> -->
 			</view>
 		</view>
 
 	</view>
 
+	
+
+	<!-- echarts图 -->
+	<view style="border: 1px solid #7373;padding: 5rpx;margin: 15rpx;width: 95%;" >
+	<!-- <view style="padding: 15rpx 450rpx 0 30rpx;">
+		<view style="font-weight: 400">每周订单量</view>
+	</view> -->
+		<ec-canvas id="mychart1" canvas-id="mychart-bar" ec="{{ec1}}"></ec-canvas>
+	</view>
+	
+	<ec-canvas style="border: 1px solid #7373;/*height: 220px*/padding: 5rpx;margin: 15rpx;width: 95%;" id="mychart" canvas-id="mychart-bar" ec="{{ec}}"></ec-canvas>
+
+<view id="aasss" style="padding: 15rpx 490rpx 0 30rpx;">
+		<view style="font-weight: 400;font-size: 1.1em">操作历史记录</view>
+	</view>
 	<view class='g_con'>
 
 		<!-- <view class='topExpress'>
@@ -64,28 +103,36 @@
 					<!-- 左边子容器 -->
 					<view class='expressRecord-single-noReach-online-top-close'>
 						<!-- 正在进行的时间轴上半个时间线 -->
-						<view class='online-bottom'></view>
+						<!-- <view class='online-bottom'></view> -->
 						<!-- 正在进行的时间轴点 -->
-						<view class='dot-closing'></view>
+            
+						<view class='dot-closing'>
+            <view class='dot-closingh'></view>
+							<view style="margin-left: 40rpx; width: 500rpx; color: #737373;">{{item.time}}</view>
+						</view>
 						<!-- 正在进行的时间轴下半个时间线 -->
 						<view class='online-bottom'></view>
 					</view>
 
 					<!-- 右边子容器 -->
+
 					<view class='expressRecord-text'>
-						<view class='expressRecord-statusing'>{{item.text}}</view>
+						<!-- <view>2020年4月2日 23:21</view> -->
+						<view class='expressRecord-statusing'>
+							<view>{{item.text}}</view>
+						</view>
 						<!-- <view class='expressRecord-status-addressing'>武汉转运中心公司 已发出，下一站 深圳转运中心</view> -->
 					</view>
 
 					<!-- 相对父级容器绝对定位的日期 -->
-					<view class='expressRecord-dating'>
+					<!-- <view class='expressRecord-dating'>
 						<view class='expressRecord-date-text'>
 							{{item.month}}
 						</view>
 						<view class='expressRecord-date-time'>
 							{{item.day}}
 						</view>
-					</view>
+					</view> -->
 
 				</view>
 			</block>
@@ -202,5 +249,6 @@
     <text class="p">2. 在 cloudfunctions/login 目录上右键上传并部署</text>
     <text class="p">3. 回到首页，重新点击获取 openid</text>
   </view> -->
-
+	</scroll-view>
+	</view>
 </view>

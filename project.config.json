@@ -24,7 +24,7 @@
 	},
 	"appid": "wxdb78a2cbf5ace274",
 	"projectname": "testapp",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.4",
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

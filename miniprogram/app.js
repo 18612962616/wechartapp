@@ -10,8 +10,13 @@ App({
       })
     }
 
+    //登录获取openid
+    
+
     this.globalData = {
       'openid': '',
+      // 'openid': 'oCnm45XGxKoMA6G9ffPZ727YmT90',
+      // 'URL': 'https://www.ftcyl.com/ftwork/'
       'URL': 'http://localhost:8060/ftwork/'
     };
     

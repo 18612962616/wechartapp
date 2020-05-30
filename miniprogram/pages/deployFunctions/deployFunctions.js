@@ -79,7 +79,7 @@ Page({
     operationData: []
   },
   getOption: function () {
-  
+
     // 指定图表的配置项和数据
     var option = {
       tooltip: {
@@ -177,10 +177,37 @@ Page({
   onLoad: async function (options) {
     var app = await getApp()
     // console.log(app.getOpenid())
-    this.openid = app.getOpenid();
-    //oCnm45XGxKoMA6G9ffPZ727YmT90
-    this.echartsComponnet = this.selectComponent('#mychart');
-    this.getData(); //获取数据
+    // this.openid = app.getOpenid();
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        // if (res.authSetting['scope.userInfo']) {
+        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+        wx.cloud.callFunction({
+          name: 'login',
+          data: {},
+          success: res => {
+            console.log('[云函数] [login] user openid: ', res.result.openid)
+            this.setData({
+              openid: res.result.openid
+            })
+            this.data.openid = res.result.openid
+
+            app.globalData.openid = res.result.openid
+            var that = this
+            //将该用户历史填写商户信息回显
+            //oCnm45XGxKoMA6G9ffPZ727YmT90
+            this.echartsComponnet = this.selectComponent('#mychart');
+            this.getData(); //获取数据
+          },
+          fail: err => {
+            console.error('[云函数] [login] 调用失败', err)
+          }
+        })
+        // }
+      }
+    })
+
   },
 
   /**

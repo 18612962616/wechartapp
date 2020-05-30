@@ -9,12 +9,12 @@ Page({
     logged: false,
     takeSession: false,
     //控制诊断结果，根据是否开通商户通和优惠促销判断到底显示哪个诊断结果模板页
-    ifresult1:false,
+    ifresult1: false,
     ifresult2: false,
     ifresult3: false,
     //控制当前人是否填写过商铺信息，未填写过为isform为true，显示表单页，填写过为ifresult为false，显示诊断结果页
     ifform: false,
-    ifresult:false,
+    ifresult: false,
     requestResult: '',
     region: ['北京市', '北京市', '海淀区'],
     customItem: '全部',
@@ -171,21 +171,21 @@ Page({
     ],
     //会员优惠体系
     preferential: [{
-        name: '消费累计积分抵现',
-        value: '消费累计积分抵现'
-      },
-      {
-        name: '享受会员折扣',
-        value: '享受会员折扣'
-      },
-      {
-        name: '享受会员菜品',
-        value: '享受会员菜品'
-      },
-      {
-        name: '消费返余额',
-        value: '消费返余额'
-      }
+      name: '消费累计积分抵现',
+      value: '消费累计积分抵现'
+    },
+    {
+      name: '享受会员折扣',
+      value: '享受会员折扣'
+    },
+    {
+      name: '享受会员菜品',
+      value: '享受会员菜品'
+    },
+    {
+      name: '消费返余额',
+      value: '消费返余额'
+    }
     ],
     //推广计划数组
     spread: [
@@ -212,49 +212,49 @@ Page({
     ],
     //是否开通点评产品数组
     commentProduct: [{
-        name: '旺铺宝',
-        value: '旺铺宝'
-      },
-      {
-        name: '商户通',
-        value: '商户通 '
-      },
-      {
-        name: '霸王餐',
-        value: '霸王餐'
-      },
-      {
-        name: 'VIP特权',
-        value: 'VIP特权'
-      },
-      {
-        name: '品牌秀',
-        value: '品牌秀'
-      },
-      {
-        name: '推广通',
-        value: '推广通'
-      },
-      {
-        name: 'NCPM（高级推广通）',
-        value: 'NCPM（高级推广通）'
-      },
-      {
-        name: '电脑关键词',
-        value: '电脑关键词'
-      },
-      {
-        name: '手机关键词',
-        value: '手机关键词'
-      },
-      {
-        name: '达人探店',
-        value: '达人探店'
-      },
-      {
-        name: '其他',
-        value: '其他'
-      }
+      name: '旺铺宝',
+      value: '旺铺宝'
+    },
+    {
+      name: '商户通',
+      value: '商户通 '
+    },
+    {
+      name: '霸王餐',
+      value: '霸王餐'
+    },
+    {
+      name: 'VIP特权',
+      value: 'VIP特权'
+    },
+    {
+      name: '品牌秀',
+      value: '品牌秀'
+    },
+    {
+      name: '推广通',
+      value: '推广通'
+    },
+    {
+      name: 'NCPM（高级推广通）',
+      value: 'NCPM（高级推广通）'
+    },
+    {
+      name: '电脑关键词',
+      value: '电脑关键词'
+    },
+    {
+      name: '手机关键词',
+      value: '手机关键词'
+    },
+    {
+      name: '达人探店',
+      value: '达人探店'
+    },
+    {
+      name: '其他',
+      value: '其他'
+    }
     ],
     //是否开通推广通数组
     communication: [
@@ -274,49 +274,49 @@ Page({
     ],
     //其他站外流量产品数组
     otherProduct: [{
-        name: '抖音官方蓝V',
-        value: '抖音官方蓝V'
-      },
-      {
-        name: '抖音达人探店',
-        value: '抖音达人探店 '
-      },
-      {
-        name: '本地知名公众号',
-        value: '本地知名公众号'
-      },
-      {
-        name: '官方公众号',
-        value: '官方公众号'
-      },
-      {
-        name: '小红书',
-        value: '小红书'
-      },
-      {
-        name: '微博',
-        value: '微博'
-      },
-      {
-        name: '联联周边游',
-        value: '联联周边游'
-      },
-      {
-        name: '爱抢购',
-        value: '爱抢购'
-      },
-      {
-        name: '如糖',
-        value: '如糖'
-      },
-      {
-        name: '达人探店',
-        value: '达人探店'
-      },
-      {
-        name: '其他',
-        value: '其他'
-      }
+      name: '抖音官方蓝V',
+      value: '抖音官方蓝V'
+    },
+    {
+      name: '抖音达人探店',
+      value: '抖音达人探店 '
+    },
+    {
+      name: '本地知名公众号',
+      value: '本地知名公众号'
+    },
+    {
+      name: '官方公众号',
+      value: '官方公众号'
+    },
+    {
+      name: '小红书',
+      value: '小红书'
+    },
+    {
+      name: '微博',
+      value: '微博'
+    },
+    {
+      name: '联联周边游',
+      value: '联联周边游'
+    },
+    {
+      name: '爱抢购',
+      value: '爱抢购'
+    },
+    {
+      name: '如糖',
+      value: '如糖'
+    },
+    {
+      name: '达人探店',
+      value: '达人探店'
+    },
+    {
+      name: '其他',
+      value: '其他'
+    }
     ],
     //可以接受最大优惠数组
     discount: [
@@ -501,77 +501,77 @@ Page({
   },
 
   //地区选择事件
-  bindShopRegionChange: function(e) {
+  bindShopRegionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
   },
   //日期选择事件
-  bindOpenDateChange: function(e) {
+  bindOpenDateChange: function (e) {
     this.setData({
       date: e.detail.value
     })
   },
   //店铺平米数选择事件
-  bindScaleChange: function(e) {
+  bindScaleChange: function (e) {
     this.setData({
       index1: e.detail.value
     })
   },
   //实际人均选择事件
-  bindPerCapitaChange: function(e) {
+  bindPerCapitaChange: function (e) {
     this.setData({
       index2: e.detail.value
     })
   },
 
   //菜系选择事件
-  bindStyleChange: function(e) {
+  bindStyleChange: function (e) {
     this.setData({
       index3: e.detail.value
     })
   },
   //星级选择事件
-  bindStarChange: function(e) {
+  bindStarChange: function (e) {
     this.setData({
       index4: e.detail.value
     })
   },
   //评论数选择事件
-  bindCommentChange: function(e) {
+  bindCommentChange: function (e) {
 
     this.setData({
       index5: e.detail.value
     })
   },
   //店铺类型选择事件
-  bindTypeChange: function(e) {
+  bindTypeChange: function (e) {
     this.setData({
       index6: e.detail.value
     })
   },
   //消费群体选择事件
-  bindConsumerChange: function(e) {
+  bindConsumerChange: function (e) {
     this.setData({
       index7: e.detail.value
     })
   },
   //经营情况选择事件
-  bindManageChange: function(e) {
+  bindManageChange: function (e) {
 
     this.setData({
       index8: e.detail.value
     })
   },
   //目前店内月流水选择事件
-  bindAccountChange: function(e) {
+  bindAccountChange: function (e) {
 
     this.setData({
       index9: e.detail.value
     })
   },
   //会员规则选择事件
-  bindRuleChange: function(e) {
+  bindRuleChange: function (e) {
     if (e.detail.value != 3) { //有会员体系
       this.setData({
         ifpreferential: true
@@ -586,14 +586,14 @@ Page({
     })
   },
   //会员优惠规则选择事件
-  checkboxPreferentialChange: function(e) {
+  checkboxPreferentialChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       preferentialSelect: e.detail.value
     })
   },
   //推广有无预算选择事件
-  bindSpreadChange: function(e) {
+  bindSpreadChange: function (e) {
     if (e.detail.value != 0) { //无预算
       this.setData({
         ifpromotionMoney: false
@@ -608,21 +608,21 @@ Page({
     })
   },
   //推广预算选择事件
-  bindPromotionMoneyChange: function(e) {
+  bindPromotionMoneyChange: function (e) {
 
     this.setData({
       index12: e.detail.value
     })
   },
   //商户通选择事件
-  bindMerchantPassChange: function(e) {
+  bindMerchantPassChange: function (e) {
 
     this.setData({
       index13: e.detail.value
     })
   },
   //是否购买点评产品选择事件
-  checkboxCommentProductChange: function(e) {
+  checkboxCommentProductChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     //js存储变量赋值
     this.data.commentProductSelect = e.detail.value
@@ -631,7 +631,7 @@ Page({
     })
   },
   //是否开通推广通选择事件
-  bindCommunicationChange: function(e) {
+  bindCommunicationChange: function (e) {
 
     if (e.detail.value != 0) { //未预算
       this.setData({
@@ -647,185 +647,185 @@ Page({
     })
   },
   //推广通预算选择事件
-  bindCommunicationBudgetChange: function(e) {
+  bindCommunicationBudgetChange: function (e) {
 
     this.setData({
       index15: e.detail.value
     })
   },
   //是否购买站外流量产品选择事件
-  checkboxOtherProductChange: function(e) {
+  checkboxOtherProductChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       otherProductSelect: e.detail.value
     })
   },
   //最大优惠选择事件
-  bindDiscountChange: function(e) {
+  bindDiscountChange: function (e) {
 
     this.setData({
       index16: e.detail.value
     })
   },
   //当前急需解决问题选择事件
-  bindProblemChange: function(e) {
+  bindProblemChange: function (e) {
 
     this.setData({
       index17: e.detail.value
     })
   },
   //商户通选择事件1
-  bindMerchantPass1Change: function(e) {
+  bindMerchantPass1Change: function (e) {
     this.setData({
       index21: e.detail.value
     })
   },
   //商户通选择事件2
-  bindMerchantPass2Change: function(e) {
+  bindMerchantPass2Change: function (e) {
     this.setData({
       index22: e.detail.value
     })
   },
   //商户通选择事件3
-  bindMerchantPass3Change: function(e) {
+  bindMerchantPass3Change: function (e) {
     this.setData({
       index23: e.detail.value
     })
   },
   //商户通选择事件4
-  bindMerchantPass4Change: function(e) {
+  bindMerchantPass4Change: function (e) {
     this.setData({
       index24: e.detail.value
     })
   },
   //商户通选择事件5
-  bindMerchantPass5Change: function(e) {
+  bindMerchantPass5Change: function (e) {
     this.setData({
       index25: e.detail.value
     })
   },
   //商户通选择事件6
-  bindMerchantPass6Change: function(e) {
+  bindMerchantPass6Change: function (e) {
     this.setData({
       index26: e.detail.value
     })
   },
   //商户通选择事件7
-  bindMerchantPass7Change: function(e) {
+  bindMerchantPass7Change: function (e) {
     this.setData({
       index27: e.detail.value
     })
   },
   //商户通选择事件8
-  bindMerchantPass8Change: function(e) {
+  bindMerchantPass8Change: function (e) {
     this.setData({
       index28: e.detail.value
     })
   },
   //商户通选择事件9
-  bindMerchantPass9Change: function(e) {
+  bindMerchantPass9Change: function (e) {
     this.setData({
       index29: e.detail.value
     })
   },
   //商户通选择事件10
-  bindMerchantPass10Change: function(e) {
+  bindMerchantPass10Change: function (e) {
     this.setData({
       index30: e.detail.value
     })
   },
   //商户通选择事件11
-  bindMerchantPass11Change: function(e) {
+  bindMerchantPass11Change: function (e) {
     this.setData({
       index31: e.detail.value
     })
   },
   //惠促销选择事件1
-  bindPromotion1Change: function(e) {
+  bindPromotion1Change: function (e) {
     this.setData({
       index41: e.detail.value
     })
   },
   //惠促销选择事件2
-  bindPromotion2Change: function(e) {
+  bindPromotion2Change: function (e) {
     this.setData({
       index42: e.detail.value
     })
   },
   //惠促销选择事件3
-  bindPromotion3Change: function(e) {
+  bindPromotion3Change: function (e) {
     this.setData({
       index43: e.detail.value
     })
   },
   //惠促销选择事件4
-  bindPromotion4Change: function(e) {
+  bindPromotion4Change: function (e) {
     this.setData({
       index44: e.detail.value
     })
   },
   //惠促销选择事件5
-  bindPromotion5Change: function(e) {
+  bindPromotion5Change: function (e) {
     this.setData({
       index45: e.detail.value
     })
   },
   //惠促销选择事件6
-  bindPromotion6Change: function(e) {
+  bindPromotion6Change: function (e) {
     this.setData({
       index46: e.detail.value
     })
   },
   //惠促销选择事件7
-  bindPromotion7Change: function(e) {
+  bindPromotion7Change: function (e) {
     this.setData({
       index47: e.detail.value
     })
   },
   //惠促销选择事件8
-  bindPromotion8Change: function(e) {
+  bindPromotion8Change: function (e) {
     this.setData({
       index48: e.detail.value
     })
   },
   //惠促销选择事件9
-  bindPromotion9Change: function(e) {
+  bindPromotion9Change: function (e) {
     this.setData({
       index49: e.detail.value
     })
   },
   //惠促销选择事件10
-  bindPromotion10Change: function(e) {
+  bindPromotion10Change: function (e) {
     this.setData({
       index50: e.detail.value
     })
   },
   //惠促销选择事件11
-  bindPromotion11Change: function(e) {
+  bindPromotion11Change: function (e) {
     this.setData({
       index51: e.detail.value
     })
   },
   //惠促销选择事件12
-  bindPromotion12Change: function(e) {
+  bindPromotion12Change: function (e) {
     this.setData({
       index52: e.detail.value
     })
   },
   //惠促销选择事件13
-  bindPromotion13Change: function(e) {
+  bindPromotion13Change: function (e) {
     this.setData({
       index53: e.detail.value
     })
   },
   //惠促销选择事件14
-  bindPromotion14Change: function(e) {
+  bindPromotion14Change: function (e) {
     this.setData({
       index54: e.detail.value
     })
   },
   //表单提交事件
-  baseFormSubmit: function(e) {
+  baseFormSubmit: function (e) {
     console.log('baseForm发生了submit事件，提交数据：', e.detail.value)
     let index = e.detail.target.dataset.index;
     if (index == "1") { //处于基础表单
@@ -860,25 +860,25 @@ Page({
         }
       }
     } else if (index == "2") { //处于商户通表单,只要开通商户通，也要填写优惠促销
-        this.setData({
-          ifbaseForm: false,
-          ifmerchantPassForm: false,
-          ifpromotionForm: true,
-        })
-        this.goTop()
+      this.setData({
+        ifbaseForm: false,
+        ifmerchantPassForm: false,
+        ifpromotionForm: true,
+      })
+      this.goTop()
 
     } else { //优惠促销完成填写并最终提交
       this.baseFormSubmitToServer(e.detail.value)
     }
   },
-  baseFormSubmitToServer: function(form) {
+  baseFormSubmitToServer: function (form) {
     this.goTop()
     //将当前数据转换为诊断结果
     console.log(form)
     this.diagnose(form)
     //根据填写情况判断跳转页
     this.toResult()
-    let that=this
+    let that = this
     //部分表单数据赋值处理
     console.log("form", this.data.form_data)
     wx.request({
@@ -888,109 +888,140 @@ Page({
         "ftShopbase": JSON.stringify(form)
 
       },
-      success: function(res) {
+      success: function (res) {
 
       },
-      error: function(res) {
+      error: function (res) {
         console.log(res);
       }
 
     })
   },
-  onLoad: function() {
+  onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
+    var that = this
+    //将该用户历史填写商户信息回显
+    wx.request({
+      // url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
+      url: app.globalData.URL + 'shop/getShop',
+      data: {
+        "openid": app.globalData.openid
 
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.cloud.callFunction({
-            name: 'login',
-            data: {},
-            success: res => {
-              console.log('[云函数] [login] user openid: ', res.result.openid)
-              this.setData({
-                openid: res.result.openid
-              })
-              this.data.openid = res.result.openid
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data != "") {
+          //如果填写过店铺信息，直接显示诊断结果页
+          //处理转换诊断结果
+          that.diagnose(res.data)
+          //根据填写情况判断进入哪个诊断页面
+          that.toResult()
 
-              app.globalData.openid = res.result.openid
-              var that = this
-              //将该用户历史填写商户信息回显
-              wx.request({
-                // url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
-                url: app.globalData.URL + 'shop/getShop',
-                data: {
-                  "openid": this.data.openid
-
-                },
-                success: function(res) {
-                  console.log(res.data)
-                  if (res.data != "") {
-                    //如果填写过店铺信息，直接显示诊断结果页
-                    //处理转换诊断结果
-                    that.diagnose(res.data)
-                    //根据填写情况判断进入哪个诊断页面
-                    that.toResult()
-
-                  }else{
-                    that.setData({
-                      //未填写过店铺信息，显示基础表单页
-                      ifform: true,
-                      ifesult: false,
-                    })
-                  }
-                },
-                error: function(res) {
-                  console.log(res);
-                }
-
-              })
-            },
-            fail: err => {
-              console.error('[云函数] [login] 调用失败', err)
-            }
-          })
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
+        } else {
+          that.setData({
+            //未填写过店铺信息，显示基础表单页
+            ifform: true,
+            ifesult: false,
           })
         }
+      },
+      error: function (res) {
+        console.log(res);
       }
+
     })
+
+    // 获取用户信息
+    // wx.getSetting({
+    //   success: res => {
+    //     // if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       wx.cloud.callFunction({
+    //         name: 'login',
+    //         data: {},
+    //         success: res => {
+    //           console.log('[云函数] [login] user openid: ', res.result.openid)
+    //           this.setData({
+    //             openid: res.result.openid
+    //           })
+    //           this.data.openid = res.result.openid
+
+    //           app.globalData.openid = res.result.openid
+    //           var that = this
+    //           //将该用户历史填写商户信息回显
+    //           wx.request({
+    //             // url: 'https://suzhan.qicp.vip/ftwork/shop/getShop',
+    //             url: app.globalData.URL + 'shop/getShop',
+    //             data: {
+    //               "openid": this.data.openid
+
+    //             },
+    //             success: function(res) {
+    //               console.log(res.data)
+    //               if (res.data != "") {
+    //                 //如果填写过店铺信息，直接显示诊断结果页
+    //                 //处理转换诊断结果
+    //                 that.diagnose(res.data)
+    //                 //根据填写情况判断进入哪个诊断页面
+    //                 that.toResult()
+
+    //               }else{
+    //                 that.setData({
+    //                   //未填写过店铺信息，显示基础表单页
+    //                   ifform: true,
+    //                   ifesult: false,
+    //                 })
+    //               }
+    //             },
+    //             error: function(res) {
+    //               console.log(res);
+    //             }
+
+    //           })
+    //         },
+    //         fail: err => {
+    //           console.error('[云函数] [login] 调用失败', err)
+    //         }
+    //       })
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           this.setData({
+    //             avatarUrl: res.userInfo.avatarUrl,
+    //             userInfo: res.userInfo
+    //           })
+    //         }
+    //       })
+    //     // }
+    //   }
+    // })
 
 
   },
   //根据店铺填写情况判断跳转目标结果页
-  toResult(){
-    console.log("sad",this.data.merchantPass1,"asd",this.data.promotion1)
-    if (this.data.diagnoseMerchantpass1!=""){//开通了商户通，则显示全部诊断结果
+  toResult() {
+    console.log("sad", this.data.merchantPass1, "asd", this.data.promotion1)
+    if (this.data.diagnoseMerchantpass1 != "") {//开通了商户通，则显示全部诊断结果
       console.log("1")
       this.setData({
         ifform: false,
-        ifresult:true,
-        ifresult1:true
+        ifresult: true,
+        ifresult1: true
       });
-    }else{//未开通商户通
-      if (this.data.diagnosePromotion1!=""){//未开通商户通，但开通了旺铺宝，则显示优惠促销结果页
+    } else {//未开通商户通
+      if (this.data.diagnosePromotion1 != "") {//未开通商户通，但开通了旺铺宝，则显示优惠促销结果页
         console.log("2")
         this.setData({
           ifform: false,
           ifresult: true,
           ifresult2: true
         });
-      }else{//商户通和旺铺宝均未开通，则显示第三结果页
-      console.log("3")
+      } else {//商户通和旺铺宝均未开通，则显示第三结果页
+        console.log("3")
         this.setData({
           ifform: false,
           ifresult: true,
@@ -1474,7 +1505,7 @@ Page({
     }
 
   },
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -1484,7 +1515,7 @@ Page({
     }
   },
 
-  onGetOpenid: function() {
+  onGetOpenid: function () {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
@@ -1499,7 +1530,7 @@ Page({
       }
     })
   },
-  goTop: function(e) { // 一键回到顶部
+  goTop: function (e) { // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
@@ -1512,13 +1543,13 @@ Page({
     }
   },
   // 上传图片
-  doUpload: function() {
+  doUpload: function () {
     // 选择图片
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res) {
+      success: function (res) {
 
         wx.showLoading({
           title: '上传中',

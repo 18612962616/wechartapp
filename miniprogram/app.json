@@ -6,7 +6,8 @@
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
+    
+    "pages/deployFunctions1/deployFunctions",
     "pages/chooseLib/chooseLib",
     "pages/shopDiagnosis/shopDiagnosis"
   ],
@@ -31,9 +32,10 @@
           "iconPath": "../miniprogram/images/index-02.png",
           "selectedIconPath": "../miniprogram/images/index-02-h.png"
         },
+        
         {
-          "pagePath": "pages/deployFunctions/deployFunctions",
-          "text": "我的店铺",
+          "pagePath": "pages/deployFunctions1/deployFunctions",
+          "text": "枫糖锦囊",
           "iconPath": "../miniprogram/images/index-03.png",
           "selectedIconPath": "../miniprogram/images/index-03-h.png"
         }
